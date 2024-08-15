@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://cl7x3wmxppxsm"]
+
+[ext_resource type="Script" path="res://ball.gd" id="1_iwag0"]
+[ext_resource type="Texture2D" uid="uid://c6bn4sm7gdfpx" path="res://assets/ball_normal_map.png" id="2_t71x6"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ylamy"]
+bounce = 0.25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yby2m"]
+radius = 0.05
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iebag"]
+normal_enabled = true
+normal_scale = -0.5
+normal_texture = ExtResource("2_t71x6")
+
+[sub_resource type="SphereMesh" id="SphereMesh_i55vk"]
+radius = 0.05
+height = 0.1
+
+[node name="Ball" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_ylamy")
+continuous_cd = true
+linear_damp = 0.5
+angular_damp = 1.0
+script = ExtResource("1_iwag0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_yby2m")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_iebag")
+mesh = SubResource("SphereMesh_i55vk")
