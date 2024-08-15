@@ -1,0 +1,1 @@
+Hi! this is a compilation of the small projects that were made to play around with the godot game engine. The games are written in gd script.
